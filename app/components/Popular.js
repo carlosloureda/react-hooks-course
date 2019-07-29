@@ -116,14 +116,11 @@ export default function Popular() {
     repos: {},
     error: null
   });
-  console.log("state: ", state);
 
   const fetchedLanguages = React.useRef([]);
 
   React.useEffect(() => {
-    console.log("Inside effect");
     if (fetchedLanguages.current.includes(selectedLanguage) === false) {
-      console.log("Before launching fetch");
       fetchedLanguages.current.push(selectedLanguage);
       fetchPopularRepos(selectedLanguage)
         .then(data => dispatch({ type: "success", selectedLanguage, data }))
